@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    string language = ViewBag.Language ?? "est";
+}
+
+<main>
+    <section class="row" aria-labelledby="aspnetTitle" style="color: white; background: rgba(40, 77, 124, 0.7); border-radius: 20px; padding: 10px;">
+
+        <h1 id="title">
+            @if (language == "ru")
+            {
+                @:Реестр штрафов
+            }
+            else if (language == "eng")
+            {
+                @:Trahvide register
+            }
+            else
+            {
+                @:Trahvide register
+            }
+        </h1>
+
+        <p class="lead" style="opacity: 50;">
+            @if (language == "ru")
+            {
+                @:В реестре штрафов вы можете просмотреть и оплатить свои штрафы.
+            }
+            else if (language == "eng")
+            {
+                @:Kontrollige ja makske oma autotrahve lihtsalt ja turvaliselt internetis..
+            }
+            else
+            {
+                @:Kontrollige ja makske oma autotrahve lihtsalt ja turvaliselt internetis..
+            }
+        </p>
+
+      
+</main>
+
+@section scripts {
+    <script type="text/javascript">
+        function setLanguage(lang) {
+            var currentUrl = window.location.href.split('?')[0];
+            var newUrl = currentUrl + (currentUrl.indexOf('?') === -1 ? '?' : '&') + 'lang=' + lang;
+            window.location.href = newUrl;
+        }
+    </script>
+}

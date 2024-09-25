@@ -1,0 +1,37 @@
+﻿@model TraahvIndividual.Models.Traahv
+
+@{
+    ViewBag.Title = "Оплата штрафа";
+}
+<main style="color: white; background: deepskyblue; border-radius: 20px; padding: 10px;">
+    <h2>@(ViewBag.Language == "ru" ? "Оплата штрафа" : ViewBag.Language == "eng" ? "Pay Penalty" : "Trahvi maksmine")</h2>
+
+    <form action="@Url.Action("Charge", "Home")" method="post" style="margin-bottom: 20px;">
+        <label for="card">
+            @(ViewBag.Language == "ru" ? "Номер карты:" : ViewBag.Language == "eng" ? "Card Number:" : "Kaardi number:")
+        </label>
+        <input type="text" id="card" name="card" style="border-radius: 10px; border: solid 1px white; margin-right: 40px;"/>
+
+        <label for="expiry">
+            @(ViewBag.Language == "ru" ? "Срок действия:" : ViewBag.Language == "eng" ? "Expiry Date:" : "Kehtivusaeg:")
+        </label>
+        <input type="text" id="expiry" name="expiry" style="border-radius: 10px; border: solid 1px white; margin-right: 40px;"/>
+
+        <label for="cvc">
+            @(ViewBag.Language == "ru" ? "CVC:" : ViewBag.Language == "eng" ? "CVC:" : "CVC:")
+        </label>
+        <input type="text" id="cvc" name="cvc" style="border-radius: 10px; border: solid 1px white; margin-right: 40px;"/>
+
+    </form>
+    <button type="submit" style="background-color: deepskyblue; border: solid #0d6efd 5px; margin-top: 10px; border-radius: 7px; color: white;">
+        @(ViewBag.Language == "ru" ? "Оплатить" : ViewBag.Language == "eng" ? "Pay" : "Makse")
+    </button>
+</main>
+
+<script type="text/javascript">
+    function setLanguage(lang) {
+        var currentUrl = window.location.href.split('?')[0];
+        var newUrl = currentUrl + (currentUrl.indexOf('?') === -1 ? '?' : '&') + 'lang=' + lang;
+        window.location.href = newUrl;
+    }
+</script>
